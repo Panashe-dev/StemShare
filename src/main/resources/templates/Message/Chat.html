@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" xmlns:sec="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{layout}">
+<body>
+
+<div  class="main-container" layout:fragment="content">
+  <div class="pd-ltr-20 xs-pd-20-10">
+    <div class="min-height-200px">
+      <div class="page-header">
+        <div class="row">
+          <div class="col-md-12 col-sm-12">
+            <div class="title">
+              <h4>Chat Bot</h4>
+            </div>
+            <nav aria-label="breadcrumb" role="navigation">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a th:href="@{/dashboard}">Home</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                  Resource Hub
+                </li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+
+      <!-- Select-2 Start -->
+      <div id="username-page">
+      <div class="pd-20 card-box mb-30">
+        <div class="clearfix">
+          <div class="pull-left">
+            <h6 class="h4">Sign in with username to chat</h6>
+          </div>
+        </div>
+        <form id="usernameForm" name="usernameForm">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group input-sm">
+                <input
+
+                        class="form-control "
+                        type="text"
+                        id="name"
+                        placeholder="Username"
+
+                />
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="accent username-submit btn btn-primary btn-sm">
+            Start Chatting
+          </button>
+        </form>
+      </div>
+      </div>
+      <!-- Select-2 end -->
+
+      <div id="chat-page" class="hidden">
+    <div class="bg-white border-radius-4 box-shadow mb-30">
+      <div class="row no-gutters">
+        <div class="col-lg-3 col-md-4 col-sm-12">
+          <div class="chat-list bg-light-gray">
+            <div class="chat-search">
+              <span class="ti-search"></span>
+              <input type="text" placeholder="Search Contact" />
+            </div>
+            <div
+                    class="notification-list chat-notification-list customscroll"
+            >
+              <ul id="messageArea3">
+
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-9 col-md-8 col-sm-12">
+          <div class="chat-detail">
+            <div class="chat-profile-header clearfix">
+              <div class="left">
+                <div class="clearfix">
+                  <div class="chat-profile-photo">
+                    <img src="vendors/images/chat-img2.jpg" alt="" />
+                  </div>
+                  <div class="chat-profile-name">
+                    <h3> You Just Joined Yo Chat<span>Let's Us Share Knowledge.</span></h3>
+                  </div>
+                </div>
+              </div>
+              <div class="right text-right">
+                <div class="dropdown">
+                  <a
+                          class="btn btn-outline-primary dropdown-toggle"
+                          href="#"
+                          role="button"
+                          data-toggle="dropdown"
+                  >
+                    Setting
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-right">
+                    <a class="dropdown-item" th:href="@{chat/export/__${id}__}">Export Chat</a>
+                    <a class="dropdown-item" href="#">Search</a>
+                    <a class="dropdown-item text-light-orange" href="#"
+                    >Delete Chat</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="chat-box">
+              <div class="chat-desc customscroll">
+                <ul id="messageArea">
+
+                </ul>
+              </div>
+
+              <form id="messageForm" name="messageForm" >
+              <div class="chat-footer">
+                <div class="file-upload">
+                  <a href="#"><i class="fa fa-paperclip"></i></a>
+                </div>
+                <div class="chat_text_area">
+                  <textarea id="message" placeholder="Type your message…"></textarea>
+                </div>
+                <div class="chat_send">
+                  <button class="btn btn-link" type="submit">
+                    <i class="icon-copy ion-paper-airplane"></i>
+                  </button>
+                </div>
+              </div>
+              </form>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      </div>
+
+
+
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

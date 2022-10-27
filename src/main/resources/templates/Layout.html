@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.w3.org/1999/xhtml">
+<head>
+  <!-- Basic Page Info -->
+  <meta charset="utf-8" />
+  <title>STEM</title>
+
+  <!-- Site favicon -->
+  <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          th:href="@{vendors/images/apple-touch-icon.png}"
+  />
+  <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          th:href="@{vendors/images/favicon-32x32.png}"
+  />
+
+  <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          th:href="@{vendors/images/favicon-16x16.png}"
+  />
+
+  <!-- Mobile Specific Metas -->
+  <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1"
+  />
+
+  <!-- Google Font -->
+  <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet"
+  />
+  <!-- CSS -->
+  <link rel="stylesheet" type="text/css" th:href="@{vendors/styles/core.css}" />
+  <link
+          rel="stylesheet"
+          type="text/css"
+          th:href="@{vendors/styles/icon-font.min.css}"
+  />
+  <link
+          rel="stylesheet"
+          type="text/css"
+          th:href="@{src/plugins/plyr/dist/plyr.css}"
+  />
+  <link
+          rel="stylesheet"
+          th:href="@{css/main.css}" />
+  <link
+          rel="stylesheet"
+          type="text/css"
+          th:href="@{src/plugins/datatables/css/dataTables.bootstrap4.min.css}"
+  />
+  <link
+          rel="stylesheet"
+          type="text/css"
+          th:href="@{src/plugins/datatables/css/responsive.bootstrap4.min.css}"
+  />
+  <link
+          rel="stylesheet"
+          type="text/css"
+          th:href="@{vendors/styles/style.css}"
+  />
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-GBZ3SGGX85"
+  ></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+
+    gtag("config", "G-GBZ3SGGX85");
+  </script>
+  <!-- Google Tag Manager -->
+  <script>
+    (function (w, d, s, l, i) {
+      w[l] = w[l] || [];
+      w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+      var f = d.getElementsByTagName(s)[0],
+              j = d.createElement(s),
+              dl = l != "dataLayer" ? "&l=" + l : "";
+      j.async = true;
+      j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+      f.parentNode.insertBefore(j, f);
+    })(window, document, "script", "dataLayer", "GTM-NXZMQSS");
+  </script>
+  <!-- End Google Tag Manager -->
+</head>
+<body>
+<div class="pre-loader">
+  <div class="pre-loader-box">
+    <div class="loader-logo">
+      <img src="vendors/images/upgrade.svg" alt="" />
+    </div>
+    <div class="loader-progress" id="progress_div">
+      <div class="bar" id="bar1"></div>
+    </div>
+    <div class="percent" id="percent1">0%</div>
+    <div class="loading-text">let's share knowledge</div>
+  </div>
+</div>
+
+<div class="header">
+  <div th:replace="Fragment/Header"></div>
+</div>
+
+<div class="left-side-bar">
+<div th:replace="Fragment/Sidebar"></div>
+</div>
+<div class="mobile-menu-overlay"></div>
+
+<div layout:fragment="content">
+
+
+</div>
+
+<!-- js -->
+<script th:src="@{vendors/scripts/core.js}"></script>
+<script th:src="@{vendors/scripts/script.min.js}"></script>
+<script th:src="@{vendors/scripts/process.js}"></script>
+<script th:src="@{vendors/scripts/layout-settings.js}"></script>
+<script th:src="@{src/plugins/apexcharts/apexcharts.min.js}"></script>
+<script th:src="@{src/plugins/datatables/js/jquery.dataTables.min.js}"></script>
+<script th:src="@{src/plugins/datatables/js/dataTables.bootstrap4.min.js}"></script>
+<script th:src="@{src/plugins/datatables/js/dataTables.responsive.min.js}"></script>
+<script th:src="@{src/plugins/datatables/js/responsive.bootstrap4.min.js}"></script>
+<script th:src="@{src/plugins/datatables/js/responsive.bootstrap4.min.js}"></script>
+<script th:src="@{src/plugins/plyr/dist/plyr.js}"></script>
+
+
+
+<!-- buttons for Export datatable -->
+<script th:src="@{src/plugins/datatables/js/dataTables.buttons.min.js}"></script>
+<script th:src="@{src/plugins/datatables/js/buttons.bootstrap4.min.js}"></script>
+<script th:src="@{src/plugins/datatables/js/buttons.print.min.js}"></script>
+<script th:src="@{src/plugins/datatables/js/buttons.html5.min.js}"></script>
+<script th:src="@{src/plugins/datatables/js/buttons.flash.min.js}"></script>
+<script th:src="@{src/plugins/datatables/js/pdfmake.min.js}"></script>
+<script th:src="@{src/plugins/datatables/js/vfs_fonts.js}"></script>
+<!-- Datatable Setting js -->
+<script th:src="@{vendors/scripts/datatable-setting.js}"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<!-- add sweet alert js & css in footer -->
+<script th:src="@{src/plugins/sweetalert2/sweetalert2.all.js}"></script>
+<script th:src="@{src/plugins/sweetalert2/sweet-alert.init.js}"></script>
+
+<script th:src="@{js/main.js}"></script>
+
+<script src="https://cdn.shr.one/1.0.1/shr.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+<th:block layout:fragment="script">
+
+</th:block>
+</body>
+</html>

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" xmlns:sec="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{layout}">
+<body>
+
+<div  class="main-container" layout:fragment="content">
+    <div class="pd-ltr-20 xs-pd-20-10">
+        <div class="min-height-200px">
+            <div class="page-header">
+                <div class="row">
+                    <div class="col-md-6 col-sm-12">
+                        <div class="title">
+                            <h4>Discussion Forum</h4>
+                        </div>
+                        <nav aria-label="breadcrumb" role="navigation">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <a th:href="@{/dashboard}">Home</a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    Q&A
+                                </li>
+                            </ol>
+                        </nav>
+                    </div>
+                    <div class="col-md-6 col-sm-12 text-right">
+                        <a
+                                href="task-add"
+                                data-toggle="modal"
+                                data-target="#task-add"
+                                class="bg-light-blue btn text-blue weight-500"
+                        ><i class="fa fa-comment mr-1"></i>Ask Here ?</a
+                        >
+                    </div>
+
+
+                    <!-- add task popup start -->
+                    <div
+                            class="modal fade customscroll"
+                            id="task-add"
+                            tabindex="-1"
+                            role="dialog"
+                    >
+                        <div
+                                class="modal-dialog modal-dialog-centered"
+                                role="document"
+                        >
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5
+                                            class="modal-title"
+                                            id="exampleModalLongTitle"
+                                    >
+                                        Question Add
+                                    </h5>
+                                    <button
+                                            type="button"
+                                            class="close"
+                                            data-dismiss="modal"
+                                            aria-label="Close"
+                                            data-toggle="tooltip"
+                                            data-placement="bottom"
+                                            title=""
+                                            data-original-title="Close Modal"
+                                    >
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <form th:action="@{/forum/c}" th:object="${question}" method="post">
+                                <div class="modal-body pd-0">
+                                    <div class="task-list-form">
+                                        <ul>
+                                            <li>
+                                                    <div class="form-group row">
+                                                        <label class="col-md-2"
+                                                        >Question</label
+                                                        >
+                                                        <div class="col-md-10">
+																								<textarea
+                                                                                                        th:field="*{question}"
+                                                                                                        class="form-control"
+                                                                                                ></textarea>
+                                                        </div>
+                                                    </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button
+                                            type="submit"
+                                            class="btn btn-primary"
+                                    >
+                                        Add
+                                    </button>
+                                    <button
+                                            type="button"
+                                            class="btn btn-secondary"
+                                            data-dismiss="modal"
+                                    >
+                                        Close
+                                    </button>
+                                </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- add task popup End -->
+                </div>
+            </div>
+
+            <div   th:if="${param.ok}"
+                    class="alert alert-success alert-dismissible fade show"
+                    role="alert"
+            >
+                <strong>Solution</strong> Successfully Saved.
+                <button
+                        type="button"
+                        class="close"
+                        data-dismiss="alert"
+                        aria-label="Close"
+                >
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+
+
+        <div class="faq-wrap">
+            <h4 class="mb-20 h4 text-blue">Asked Questions & Answers</h4>
+            <div id="accordion">
+                <th:block th:each="q :${ListQuestions}">
+                    <div class="card">
+                        <div class="card-header">
+                            <button
+                                    class="btn btn-block"
+                                    data-toggle="collapse"
+                                    data-target="#faq1"
+                            >
+                               Q: [[${q.question}]]
+                            </button>
+                            <button
+                                    th:id="${q.getId()}"
+                                    onclick="setAccountNumber(this.id)"
+                                    data-toggle="modal"
+                                    data-target="#Medium-modal"
+                                    type="button"
+                                    class="bg-light-blue btn text-blue weight-300">
+                                <i class="fa fa-reply mr-1"></i>Reply Here ?
+                            </button>
+                            Posted By-[[${q.createdBy}]]
+                            @[[${#temporals.format(q.createdDate, 'dd-MM-yyyy')}]]
+                        </div>
+                        <div id="faq1" class="collapse show" data-parent="#accordion">
+                            <div class="card-body">
+                                <div  th:each="a :${q.getAnswers()}">
+                                  <p><span>Answer:</span>[[${a.getAnswer()}]]</p>
+                                    <hr>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </th:block>
+            </div>
+
+
+
+
+                    <div
+                            class="modal fade"
+                            id="Medium-modal"
+                            tabindex="-1"
+                            role="dialog"
+                            aria-labelledby="myLargeModalLabel"
+                            aria-hidden="true"
+                    >
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title" id="myLargeModalLabel">
+                                        Answer Add
+                                    </h4>
+                                    <button
+                                            type="button"
+                                            class="close"
+                                            data-dismiss="modal"
+                                            aria-hidden="true"
+                                    >
+                                        ×
+                                    </button>
+                                </div>
+                                <form th:action="@{/answer/a}"  th:object="${answer}" method="post">
+                                <div class="modal-body">
+                                    <div class="task-list-form">
+                                        <input hidden type="text" th:field="*{questionId}" id="accountNumber"/>
+                                                <div class="form-group row">
+                                                    <label class="col-md-2"
+                                                    >Answer</label
+                                                    >
+                                                    <div class="col-md-10">
+																								<textarea
+                                                                                                        th:field="*{answer}"
+                                                                                                        class="form-control"
+                                                                                                ></textarea>
+                                                    </div>
+                                                </div>
+
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button
+                                            type="button"
+                                            class="btn btn-secondary"
+                                            data-dismiss="modal"
+                                    >
+                                        Close
+                                    </button>
+                                    <button type="submit" class="btn btn-primary">
+                                       Submit
+                                    </button>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+
+
+            </div>
+
+
+        </div>
+        </div>
+    </div>
+        </div>
+
+<th:block layout:fragment="script">
+    <script>
+        function  setAccountNumber(accountNumber){
+            $('#accountNumber').val(accountNumber);
+        }
+    </script>
+</th:block>
+
+</body>
+</html>

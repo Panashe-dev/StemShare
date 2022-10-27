@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" xmlns:sec="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{layout}">
+<body>
+
+<div  class="main-container" layout:fragment="content">
+  <div class="pd-ltr-20 xs-pd-20-10">
+    <div class="min-height-200px">
+      <div class="page-header">
+        <div class="row">
+          <div class="col-md-12 col-sm-12">
+            <div class="title">
+              <h4>E-Library</h4>
+            </div>
+            <nav aria-label="breadcrumb" role="navigation">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a th:href="@{/dashboard}">Home</a>
+                </li>
+                <li class="breadcrumb-item">
+                  Library
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                  [[${text}]]
+                </li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-box mb-30">
+        <div class="pd-20">
+          <h4 class="text-blue h4"></h4>
+        </div>
+        <div class="pb-20">
+          <table
+                  class="table hover multiple-select-row nowrap"
+          >
+            <thead>
+            <tr>
+              <th>Date Create</th>
+              <th>Book Name</th>
+              <th>Author</th>
+              <th>Size</th>
+              <th>Publish Date</th>
+              <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="r :${resource}">
+              <td class="table-plus" th:text="${#temporals.format(r.createdDate, 'dd-MM-yyyy hh:mm')}">Gloria F. Mead</td>
+              <td th:text="${r.getBookName()}">25</td>
+              <td th:text="${r.getAuthor()}">Sagittarius</td>
+              <td>
+                <span>[[${r.getSize()}]]</span><span>KB</span>
+              </td>
+              <td th:text="${r.getDatePublish()}"></td>
+              <td>
+                <a th:href="@{'/download-book?id= ' +${r.getId()}}" data-color="#e95959"
+                ><i class="icon-copy dw dw-download"></i
+                ></a>
+              </td>
+            </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!-- Export Datatable End -->
+
+
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

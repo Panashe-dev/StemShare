@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" xmlns:sec="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{layout}">
+<body>
+
+<div class="main-container" layout:fragment="content">
+    <div class="pd-ltr-20 xs-pd-20-10">
+        <div class="min-height-200px">
+            <div class="page-header">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                        <div class="title">
+                            <h4>Profile</h4>
+                        </div>
+                        <nav aria-label="breadcrumb" role="navigation">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <a href="index.html">Home</a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    Profile
+                                </li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-30">
+                    <div class="card-box height-100-p overflow-hidden">
+                        <div class="profile-tab height-100-p">
+                            <div class="tab height-100-p">
+                                <ul class="nav nav-tabs customtab" role="tablist">
+                                    <li class="nav-item">
+                                        <a
+                                                class="nav-link active"
+                                                data-toggle="tab"
+                                                href="#timeline"
+                                                role="tab"
+                                        >Personal Information</a
+                                        >
+                                    </li>
+                                    <li class="nav-item">
+                                        <a
+                                                class="nav-link"
+                                                data-toggle="tab"
+                                                href="#tasks"
+                                                role="tab"
+                                        >School Information</a
+                                        >
+                                    </li>
+                                    <li class="nav-item">
+                                        <a
+                                                class="nav-link"
+                                                data-toggle="tab"
+                                                href="#setting"
+                                                role="tab"
+                                        >Other Information</a
+                                        >
+                                    </li>
+                                </ul>
+                                <div class="tab-content">
+                                    <!-- Timeline Tab start -->
+                                    <div
+                                            class="tab-pane fade show active"
+                                            id="timeline"
+                                            role="tabpanel"
+                                    >
+                                        <div class="pd-20">
+                                            <form th:object="${user}">
+                                                <ul class="profile-edit-list row">
+                                                    <li class="weight-500 col-md-12">
+                                                        <h4 class="text-blue h5 mb-20">
+                                                            Edit Your Personal Setting
+                                                        </h4>
+                                                        <div class="form-group">
+                                                            <label>Username</label>
+                                                            <input
+                                                                    class="form-control form-control-lg"
+                                                                    type="text"
+                                                                    th:field="*{userName}"
+                                                            />
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Firstname</label>
+                                                            <input
+                                                                    class="form-control form-control-lg"
+                                                                    type="text"
+                                                                    th:field="*{firstName}"
+                                                            />
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Lastname</label>
+                                                            <input
+                                                                    class="form-control form-control-lg"
+                                                                    type="email"
+                                                                    th:field="*{lastName}"
+                                                            />
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Gender</label>
+                                                            <div class="d-flex">
+                                                                <div
+                                                                        class="custom-control custom-radio mb-5 mr-20"
+                                                                >
+                                                                    <input
+                                                                            type="radio"
+                                                                            id="customRadio4"
+                                                                            name="customRadio"
+                                                                            class="custom-control-input"
+                                                                    />
+                                                                    <label
+                                                                            class="custom-control-label weight-400"
+                                                                            for="customRadio4"
+                                                                    >Male</label
+                                                                    >
+                                                                </div>
+                                                                <div
+                                                                        class="custom-control custom-radio mb-5"
+                                                                >
+                                                                    <input
+                                                                            type="radio"
+                                                                            id="customRadio5"
+                                                                            name="customRadio"
+                                                                            class="custom-control-input"
+                                                                    />
+                                                                    <label
+                                                                            class="custom-control-label weight-400"
+                                                                            for="customRadio5"
+                                                                    >Female</label
+                                                                    >
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
+
+                                                        <div class="form-group">
+                                                            <label>Email</label>
+                                                            <input
+                                                                    class="form-control form-control-lg"
+                                                                    type="text"
+                                                                    th:field="*{email}"
+                                                            />
+                                                        </div>
+
+
+                                                        <div class="form-group mb-0">
+                                                            <input
+                                                                    type="submit"
+                                                                    class="btn btn-primary"
+                                                                    value="Update Information"
+                                                            />
+                                                        </div>
+                                                    </li>
+
+                                                </ul>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <!-- Timeline Tab End -->
+                                    <!-- Tasks Tab start -->
+                                    <div class="profile-setting"  role="tabpanel">
+                                        <form th:object="${user}">
+                                            <ul class="profile-edit-list row">
+                                                <li class="weight-500 col-md-12">
+                                                    <h4 class="text-blue h5 mb-20">
+                                                        Edit Your Personal Setting
+                                                    </h4>
+                                                    <div class="form-group">
+                                                        <label>Full Name</label>
+                                                        <input
+                                                                class="form-control form-control-lg"
+                                                                type="text"
+                                                                th:field="*{userName}"
+                                                        />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Title</label>
+                                                        <input
+                                                                class="form-control form-control-lg"
+                                                                type="text"
+                                                        />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Email</label>
+                                                        <input
+                                                                class="form-control form-control-lg"
+                                                                type="email"
+                                                        />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Gender</label>
+                                                        <div class="d-flex">
+                                                            <div
+                                                                    class="custom-control custom-radio mb-5 mr-20"
+                                                            >
+                                                                <input
+                                                                        type="radio"
+                                                                        id="customRadio4"
+                                                                        name="customRadio"
+                                                                        class="custom-control-input"
+                                                                />
+                                                                <label
+                                                                        class="custom-control-label weight-400"
+                                                                        for="customRadio4"
+                                                                >Male</label
+                                                                >
+                                                            </div>
+                                                            <div
+                                                                    class="custom-control custom-radio mb-5"
+                                                            >
+                                                                <input
+                                                                        type="radio"
+                                                                        id="customRadio5"
+                                                                        name="customRadio"
+                                                                        class="custom-control-input"
+                                                                />
+                                                                <label
+                                                                        class="custom-control-label weight-400"
+                                                                        for="customRadio5"
+                                                                >Female</label
+                                                                >
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+
+                                                    <div class="form-group">
+                                                        <label>Phone Number</label>
+                                                        <input
+                                                                class="form-control form-control-lg"
+                                                                type="text"
+                                                        />
+                                                    </div>
+
+
+                                                    <div class="form-group mb-0">
+                                                        <input
+                                                                type="submit"
+                                                                class="btn btn-primary"
+                                                                value="Update Information"
+                                                        />
+                                                    </div>
+                                                </li>
+
+                                            </ul>
+                                        </form>
+
+                                    </div>
+                                    <!-- Tasks Tab End -->
+                                    <!-- Setting Tab start -->
+                                    <div
+                                            class="tab-pane fade height-100-p"
+                                            id="setting"
+                                            role="tabpanel"
+                                    >
+                                        <div class="profile-setting">
+                                            <form th:object="${user}">
+                                                <ul class="profile-edit-list row">
+                                                    <li class="weight-500 col-md-12">
+                                                        <h4 class="text-blue h5 mb-20">
+                                                            Edit Your Personal Setting
+                                                        </h4>
+                                                        <div class="form-group">
+                                                            <label>Full Name</label>
+                                                            <input
+                                                                    class="form-control form-control-lg"
+                                                                    type="text"
+                                                                    th:field="*{userName}"
+                                                            />
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Title</label>
+                                                            <input
+                                                                    class="form-control form-control-lg"
+                                                                    type="text"
+                                                            />
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Email</label>
+                                                            <input
+                                                                    class="form-control form-control-lg"
+                                                                    type="email"
+                                                            />
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Gender</label>
+                                                            <div class="d-flex">
+                                                                <div
+                                                                        class="custom-control custom-radio mb-5 mr-20"
+                                                                >
+                                                                    <input
+                                                                            type="radio"
+                                                                            id="customRadio4"
+                                                                            name="customRadio"
+                                                                            class="custom-control-input"
+                                                                    />
+                                                                    <label
+                                                                            class="custom-control-label weight-400"
+                                                                            for="customRadio4"
+                                                                    >Male</label
+                                                                    >
+                                                                </div>
+                                                                <div
+                                                                        class="custom-control custom-radio mb-5"
+                                                                >
+                                                                    <input
+                                                                            type="radio"
+                                                                            id="customRadio5"
+                                                                            name="customRadio"
+                                                                            class="custom-control-input"
+                                                                    />
+                                                                    <label
+                                                                            class="custom-control-label weight-400"
+                                                                            for="customRadio5"
+                                                                    >Female</label
+                                                                    >
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
+
+                                                        <div class="form-group">
+                                                            <label>Phone Number</label>
+                                                            <input
+                                                                    class="form-control form-control-lg"
+                                                                    type="text"
+                                                            />
+                                                        </div>
+
+
+                                                        <div class="form-group mb-0">
+                                                            <input
+                                                                    type="submit"
+                                                                    class="btn btn-primary"
+                                                                    value="Update Information"
+                                                            />
+                                                        </div>
+                                                    </li>
+
+                                                </ul>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <!-- Setting Tab End -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

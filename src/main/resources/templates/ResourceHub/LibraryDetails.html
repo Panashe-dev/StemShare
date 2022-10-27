@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" xmlns:sec="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{layout}">
+<body>
+
+<div  class="main-container" layout:fragment="content">
+    <div class="pd-ltr-20 xs-pd-20-10">
+        <div class="min-height-200px">
+            <div class="page-header">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                        <div class="title">
+                            <h4>E-Library</h4>
+                        </div>
+                        <nav aria-label="breadcrumb" role="navigation">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <a th:href="@{/dashboard}">Home</a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    Library
+                                </li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-box overflow-hidden col-12">
+                <h5 class="pd-20 h5 mb-0">Archives</h5>
+                <div class="list-group mb-3">
+                    <a
+                            th:href="@{/chemistry-lib}"
+                            class="list-group-item d-flex align-items-center justify-content-between"
+                    >E-Chemistry</a
+                    >
+                    <a
+                            th:href="@{/biology-lib}"
+                            class="list-group-item d-flex align-items-center justify-content-between"
+                    >E-Biology</a
+                    >
+                    <a
+                            th:href="@{/mathematics-lib}"
+                            class="list-group-item d-flex align-items-center justify-content-between"
+                    >E-Mathematics</a
+                    >
+                    <a
+                            th:href="@{/physics-lib}"
+                            class="list-group-item d-flex align-items-center justify-content-between"
+                    >E-Physics</a
+                    >
+                    <a
+                            th:href="@{/Computer-Science-lib}"
+                            class="list-group-item d-flex align-items-center justify-content-between"
+                    >E-Computer Science</a
+                    >
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

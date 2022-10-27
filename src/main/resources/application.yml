@@ -1,0 +1,24 @@
+spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/shalom?autoReconnect=true&useSSL=false
+    username: root
+    password: Pass$1234
+
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 50000MB
+      max-request-size: 50000MB
+
+  main:
+    allow-circular-references: true
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+
+server:
+  port: 8088
+
